@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #314D3D;
+  --color-olive: #70745E;
+  --color-sandalwood: #C8A27A;
+  --color-cream: #FAF7F2;
+  --color-card-beige: #F3EEE6;
+  --color-dark: #26231F;
+  --color-muted: #6F6A63;
+  --color-background: var(--color-cream);
+  --color-foreground: var(--color-dark);
+
+  --font-sans: var(--font-outfit);
+  --font-serif: var(--font-playfair);
+
+  /* Premium Shadows */
+  --shadow-soft: 0 8px 30px -4px rgba(38, 35, 31, 0.04);
+  --shadow-float: 0 20px 40px -8px rgba(38, 35, 31, 0.08);
+  --shadow-glow: 0 0 40px -10px rgba(49, 77, 61, 0.15);
+
+  /* Glass Blur */
+  --blur-glass: blur(16px);
+  --blur-glass-heavy: blur(24px);
+
+  /* Cinematic Spacing */
+  --spacing-section: 8rem;
+  --spacing-section-sm: 4rem;
+
+  /* Animations */
+  --animate-fade-in: fade-in 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  --animate-float: float 8s ease-in-out infinite;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+}
+
+:root {
+  --background: #FAF7F2;
+  --foreground: #26231F;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base text selection color */
+::selection {
+  background-color: #314D3D;
+  color: #FAF7F2;
+}
+
+/* Typography Utilities */
+@layer utilities {
+  .heading-hero {
+    @apply font-serif text-5xl md:text-6xl lg:text-[5rem] font-light tracking-normal text-dark leading-[1.15];
+  }
+  
+  .heading-section {
+    @apply font-serif text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-dark leading-snug;
+  }
+  
+  .heading-card {
+    @apply font-serif text-xl md:text-2xl font-light tracking-tight text-dark;
+  }
+
+  .body-editorial {
+    @apply font-sans text-base md:text-lg text-muted leading-relaxed font-light;
+  }
+
+  .text-caption {
+    @apply font-sans text-xs md:text-sm text-muted uppercase tracking-wider font-medium;
+  }
+}
+
+/* Noise overlay class */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
